@@ -1,0 +1,48 @@
+███████╗ ██████╗ ██╗         ██████╗ ██████╗  █████╗  ██████╗████████╗██╗ ██████╗███████╗    ███████╗███████╗███████╗███████╗██╗ ██████╗ ███╗   ██╗███████╗
+██╔════╝██╔═══██╗██║         ██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║██╔════╝██╔════╝    ██╔════╝██╔════╝██╔════╝██╔════╝██║██╔═══██╗████╗  ██║██╔════╝
+███████╗██║   ██║██║         ██████╔╝██████╔╝███████║██║        ██║   ██║██║     █████╗      ███████╗█████╗  ███████╗███████╗██║██║   ██║██╔██╗ ██║███████╗
+╚════██║██║▄▄ ██║██║         ██╔═══╝ ██╔══██╗██╔══██║██║        ██║   ██║██║     ██╔══╝      ╚════██║██╔══╝  ╚════██║╚════██║██║██║   ██║██║╚██╗██║╚════██║
+███████║╚██████╔╝███████╗    ██║     ██║  ██║██║  ██║╚██████╗   ██║   ██║╚██████╗███████╗    ███████║███████╗███████║███████║██║╚██████╔╝██║ ╚████║███████║
+╚══════╝ ╚══▀▀═╝ ╚══════╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝╚══════╝    ╚══════╝╚══════╝╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+
+This notes have daily practice on postgres SQL 
+
+Here are some important commands and sql queries on POSTGRES SQL 
+
+- to start the postgres sql client 
+
+    `psql postgres`
+
+- to quit the postgres sql client 
+
+    `\q`
+
+- to create a database in postgres 
+
+    `CREATE DATABASE mydatabase`
+
+    - create a role and assign a role to it. Currently we are assigning the role as SUPER USER 
+    
+        `CREATE ROLE role_name WITH SUPERUSER LOGIN; - will create a user with admin access 
+
+        You can also follow the sequence below 
+
+        - CREATE ROLE myuser WITH LOGIN PASSWORD 'mypassword';
+        - ALTER ROLE myuser WITH SUPERUSER;
+        - CREATE DATABASE mydatabase OWNER myuser;
+
+
+- to connect to database with created user 
+
+    `psql -U myuser -d mydatabase` 
+
+- to list all the databases 
+
+    `psql -l`
+
+- to list all the roles 
+
+    `\du`
+
+
+

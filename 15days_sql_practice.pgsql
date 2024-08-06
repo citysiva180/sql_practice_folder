@@ -254,5 +254,12 @@ SELECT
 FROM
 	customer;
 
+-- Concatenation in Postgres SQL 
+
+SELECT
+	LEFT(first_name,1) || LEFT(last_name,1)
+FROM
+	customer;
+
 
 	

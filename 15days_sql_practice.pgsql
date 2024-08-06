@@ -178,4 +178,81 @@ group by
 order by 
 	sum(amount) desc;
 	
+---------------------------------------------------
+
+-- DAY 4 : Intermediate Functions
+
+-- UPPER AND LOWER STRING FUNCTIONS
+
+SELECT 
+	UPPER(email) as email_upper,
+	LOWER(email) as email_lower
+FROM 
+	customer;
+
+-- LENGTH FUNCTIONS - Gets the Length of the string
+
+-- The below query gets the length of the email greater than 30 
+
+SELECT 
+	UPPER(email) as email_upper,
+	LOWER(email) as email_lower
+FROM 
+	customer
+WHERE LENGTH(email) > 30;
+
+-- Write a query to find all the customers where 
+-- their first name or last name is greater than 10
+-- characters 
+
+SELECT
+	lower(first_name) as first_name_lower,
+	lower(last_name) as last_name_lower,
+	lower(email) as email_lower  
+FROM
+	customer
+WHERE
+	length(first_name) > 10
+	or length(last_name) > 10;
+
+-- Left function helps in getting a substring from left 
+-- When you pass the LEFT(column_name, substring_length) 
+-- it will retrieve values to that level only
+
+SELECT
+	LEFT(first_name, 2),
+	first_name
+FROM
+	customer;
+
+-- You can also get a single character at a position from you
+-- can do as shown below
+
+SELECT
+	LEFT(first_name,2),
+	RIGHT(LEFT(first_name,2),1),
+	first_name
+FROM
+	customer;
+
+-- Challenge 
+-- Get the last five letters of the email address 
+-- Get the email address always ends with .org
+-- 
+SELECT
+	RIGHT(email,5) as last_5_letters
+FROM
+	customer;
+
+SELECT
+	RIGHT(email,4) as domain_name
+FROM
+	customer;
+
+SELECT
+	LEFT(RIGHT(email,4),1)
+FROM
+	customer;
+
+
 	

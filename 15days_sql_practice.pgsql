@@ -181,6 +181,7 @@ order by
 ---------------------------------------------------
 
 -- DAY 4 : Intermediate Functions
+---------------------------------------------------
 
 -- UPPER AND LOWER STRING FUNCTIONS
 
@@ -190,6 +191,7 @@ SELECT
 FROM 
 	customer;
 
+---------------------------------------------------
 -- LENGTH FUNCTIONS - Gets the Length of the string
 
 -- The below query gets the length of the email greater than 30 
@@ -200,6 +202,8 @@ SELECT
 FROM 
 	customer
 WHERE LENGTH(email) > 30;
+
+---------------------------------------------------
 
 -- Write a query to find all the customers where 
 -- their first name or last name is greater than 10
@@ -219,6 +223,8 @@ WHERE
 -- When you pass the LEFT(column_name, substring_length) 
 -- it will retrieve values to that level only
 
+---------------------------------------------------
+
 SELECT
 	LEFT(first_name, 2),
 	first_name
@@ -227,6 +233,8 @@ FROM
 
 -- You can also get a single character at a position from you
 -- can do as shown below
+
+---------------------------------------------------
 
 SELECT
 	LEFT(first_name,2),
@@ -238,22 +246,28 @@ FROM
 -- Challenge 
 -- Get the last five letters of the email address 
 -- Get the email address always ends with .org
--- 
+
+--------------------------------------------------- 
+
+
 SELECT
 	RIGHT(email,5) as last_5_letters
 FROM
 	customer;
 
+---------------------------------------------------
 SELECT
 	RIGHT(email,4) as domain_name
 FROM
 	customer;
 
+---------------------------------------------------
 SELECT
 	LEFT(RIGHT(email,4),1)
 FROM
 	customer;
 
+---------------------------------------------------
 -- Concatenation in Postgres SQL 
 
 SELECT
@@ -261,5 +275,11 @@ SELECT
 FROM
 	customer;
 
+---------------------------------------------------
+-- Challenge 
 
+SELECT
+	LEFT(first_name, 1) || '***@sakilacustomer.org' as anonymized_email
+FROM
+	customer;
 	

@@ -277,9 +277,17 @@ FROM
 
 ---------------------------------------------------
 -- Challenge 
-
+-- Concatenate the first_name column with astrix to get an anonymized_email
 SELECT
 	LEFT(first_name, 1) || '***@sakilacustomer.org' as anonymized_email
 FROM
 	customer;
+
+-- Original Solution 
+
+SELECT
+	LEFT(email, 1) || '***' || RIGHT(email,19) AS anonymized_email
+FROM
+	customer;
 	
+---------------------------------------------------

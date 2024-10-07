@@ -291,3 +291,68 @@ FROM
 	customer;
 	
 ---------------------------------------------------
+
+-- Challenge, get the first name from email and last name from 
+-- Last name column and concatenate it 
+
+select
+	last_name ||', '|| LEFT(email, position('.' in email)-1)
+from
+	customer;
+
+---------------------------------------------------
+
+-- SUBSTRING(string, start_position, length)
+
+select 
+	left(email, 1) || '***' || SUBSTRING(email from position('.' in email) for 2)
+from customer
+
+---------------------------------------------------
+
+select
+	'***' || SUBSTRING(email from position('.' in email)-1 for 3) || '***'
+	|| SUBSTRING(email from position('@' in email))
+from
+	customer
+	
+---------------------------------------------------
+-- Extracting Date or Details from a Date string 
+-- Most important extract functions are  -  Day, Day Of Week, Day Of Year, hour, month, quarter, week and year.
+-- Most others are rarely used.
+
+select 
+extract(day from rental_date),
+count(*)
+from rental r
+group by extract (day from rental_date)
+order by count(*) desc
+
+---------------------------------------------------
+-- Excercise problem solved!
+
+select 
+extract(month from payment_date) as "month",
+sum(amount) as total_payment_amount
+from payment 
+group by month 
+order by total_payment_amount desc
+
+select 
+extract(dow from payment_date) as "day_of_week",
+sum(amount) as total_payment_amount
+from payment 
+group by day_of_week 
+order by total_payment_amount desc
+
+
+---------------------------------------------------
+-- The TO_CHAR is more like a extracter which actually 
+-- cast the date string or any other string to your preferred format. 
+-- This will help casting your output to your preference 
+
+SELECT 
+*, 
+extract(MONTH FROM payment_date),
+to_char(payment_date, 'MM-YYYY')
+FROM payment

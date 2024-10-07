@@ -344,8 +344,6 @@ sum(amount) as total_payment_amount
 from payment 
 group by day_of_week 
 order by total_payment_amount desc
-
-
 ---------------------------------------------------
 -- The TO_CHAR is more like a extracter which actually 
 -- cast the date string or any other string to your preferred format. 
@@ -356,3 +354,28 @@ SELECT
 extract(MONTH FROM payment_date),
 to_char(payment_date, 'MM-YYYY')
 FROM payment
+
+---------------------------------------------------
+-- Challenge 
+select 
+sum(amount) as total_payment, 
+TO_CHAR(payment_date, 'Dy, HH:MI') as day_time
+from payment 
+group by day_time 
+order by total_payment asc 
+---------------------------------------------------
+-- Timestamps and Intervals
+
+SELECT 
+current_timestamp, -- Gives the current date time
+current_timestamp - rental_date
+FROM rental
+
+---------------------------------------------------
+
+select 
+customer_id, 
+avg(return_date-rental_date) as rental_duration
+from rental
+group by customer_id 
+order by rental_duration desc 
